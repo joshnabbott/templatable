@@ -15,4 +15,4 @@ ActionView::Base.instance_eval { include FormTemplatesHelper }
 ActionView::Base.instance_eval { include FormTemplateColumnsHelper }
 
 # Add plugin's views to view paths
-ActionController::Base.append_view_path(File.join(File.dirname(__FILE__), 'lib', 'app', 'views'))
+ActionController::Base.append_view_path(File.join(File.dirname(__FILE__), '../', 'lib', 'app', 'views'))
