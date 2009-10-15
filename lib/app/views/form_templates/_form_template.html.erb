@@ -1,0 +1,9 @@
+<tr class="<%= cycle('even', 'odd') %>">
+  <td class="center"><%= form_template.owner_type %></td>
+  <td class="center"><%= form_template.name %></td>
+  <td class="center"><%= form_template.form_template_columns.count %></td>
+  <td class="center">
+    <%= link_to 'Edit', [:edit, form_template] %> | 
+    <%= link_to t('destroy'), form_template, :confirm => 'Are you sure?', :method => :delete %>
+  </td>
+</tr>

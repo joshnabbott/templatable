@@ -1,0 +1,8 @@
+Description:
+  Creates templatable migrations in the db/migrate directory.
+
+Example:
+  ./script/generate templatable
+
+Then
+  rake db:migrate

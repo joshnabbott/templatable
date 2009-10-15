@@ -1,0 +1,13 @@
+<%= sub_navigation(['New form template', new_form_template_path]) %>
+
+<h1>Listing form templates</h1>
+
+<table class="four_col">
+  <tr>
+    <th class="first">Owner Type</th>
+    <th>Name</th>
+    <th>Number of columns</th>
+    <th class="last">Actions</th>
+  </tr>
+  <%= render @form_templates %>
+</table>

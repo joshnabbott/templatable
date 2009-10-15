@@ -1,0 +1,16 @@
+<%= f.error_messages %>
+
+<p>
+  <%= f.label :owner_type %>
+  <%= f.select :owner_type, templatable_models, :selected => @owner_type %>
+</p>
+<%= observe_field :form_template_owner_type, :url => @form_template.new_record? ? new_form_template_path : edit_form_template_path, :method => :get, :with => 'form_template[owner_type]' %>
+
+<p>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+</p>
+
+<div id="form_template_columns">
+  <%= render :partial => 'form_template_columns', :locals => { :form_template_columns => build_form_template_columns_for(@owner_type) } %>
+</div>

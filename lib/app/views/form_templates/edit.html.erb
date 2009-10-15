@@ -1,0 +1,10 @@
+<h1>Editing form template</h1>
+
+<% form_for(@form_template) do |f| %>
+  <fieldset>
+    <%= render :partial => 'form', :locals => { :f => f } %>
+    <p>
+      <%= f.submit 'Update' %> - or - <%= link_to 'Cancel', form_templates_path %>
+    </p>
+  </fieldset>
+<% end %>

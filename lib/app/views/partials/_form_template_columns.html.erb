@@ -1,0 +1,7 @@
+<%-
+  # Figure out what form option helper to use based on the column type
+  @form_template.form_template_columns.each do |column|
+-%>
+  <label for="<%= object_name %>_<%= column.name %>"><%= column.human_name %></label>
+  <%= form_field_for_column(column) %>
+<%- end -%>

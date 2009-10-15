@@ -1,0 +1,25 @@
+<%- form_template_columns.each do |form_template_column| -%>
+  <% fields_for_form_template_column(form_template_column) do |fields| -%>
+    <p>
+      <%= fields.label :selected, form_template_column.human_name, :for => form_template_column.name %>
+      <%= fields.check_box :selected, :id => form_template_column.name %>
+    </p>
+
+    <p><%= link_to_function 'Field options', "$('#field-options-#{form_template_column.object_id}').toggle();" %></p>
+
+    <div id="field-options-<%= form_template_column.object_id %>" style="display: <%= form_template_column.options.values.any? { |value| value.present? } ? 'block' : 'none' %>;">
+      <p>
+        <%= fields.label :field_type %>
+        <%= fields.select :field_type, FormTemplateColumn::FIELD_TYPES %>
+      </p>
+      <p>
+        <%= fields.label :field_options %>
+        <%= fields.text_field :field_options %>
+      </p>
+    </div>
+    <p>
+      <%= fields.hidden_field :name %>
+      <%= fields.hidden_field :sql_type %>
+    </p>
+  <%- end -%>
+<%- end -%>
