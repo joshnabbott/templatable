@@ -15,7 +15,7 @@ class FormTemplateColumn < ActiveRecord::Base
   end
 
   def after_initialize
-    self.options ||= { 'field_type' => nil, 'field_options' => nil }
+    self.options ||= { 'field_type' => nil, 'field_options' => nil, 'field_required' => false }
   end
 
   def field_options
@@ -24,6 +24,14 @@ class FormTemplateColumn < ActiveRecord::Base
 
   def field_options=(value)
     @field_options = value
+  end
+
+  def field_required
+    @field_required ||= options['field_required']
+  end
+
+  def field_required=(value)
+    @field_required = ActiveRecord::ConnectionAdapters::Column.value_to_boolean(value)
   end
 
   def field_type
@@ -35,6 +43,10 @@ class FormTemplateColumn < ActiveRecord::Base
   end
 
   def set_options
-    self.options = { 'field_type' => self.field_type, 'field_options' => self.field_options }
+    self.options = {
+      'field_type'     => self.field_type,
+      'field_options'  => self.field_options,
+      'field_required' => ActiveRecord::ConnectionAdapters::Column.value_to_boolean(self.field_required)
+    }
   end
 end
