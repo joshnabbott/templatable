@@ -15,7 +15,7 @@ class FormTemplateColumn < ActiveRecord::Base
   end
 
   def after_initialize
-    self.options ||= { 'field_type' => nil, 'field_options' => nil, 'field_required' => false }
+    self.options ||= { 'field_type' => nil, 'field_options' => nil, 'field_required' => 'false' }
   end
 
   def field_options
